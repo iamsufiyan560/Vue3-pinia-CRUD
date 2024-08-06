@@ -19,11 +19,14 @@ const store = useCategoryStore();
 
 const onSubmit = async () => {
   try {
+    displayLoader();
+
     await store.createCategory(form.value);
     router.push("/");
   } catch (error) {
     console.log(error);
   } finally {
+    destroyLoader();
   }
 };
 
